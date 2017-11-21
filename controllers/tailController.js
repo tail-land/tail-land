@@ -34,7 +34,49 @@ module.exports = {
         }
         return res.redirect('/profile');
       });
-  }
+  },
+  idGet: (req, res, next) => {
+    const id = req.params.id;
+
+    Tail.findById(id, (err, tails) => {
+      res.render('tail/tail', {
+        tails: tails,
+        title: "Tail"
+      });
+    });
+  },
+
+  editGet: (req, res, next) => {
+    const id = req.params.id;
+    console.log("entra en get edit id");
+    Tail.findById(id, (err, tails) => {
+      res.render(`tail/edit`, {
+        title:"edit tail",
+        tails: tails
+      });
+    });
+  },
+  editPost: (req, res, next) => {
+
+    const id = req.params.id;
+    const infoTailEdit = {
+      name:req.body.name,
+      time_max: req.body.time_max
+    };
+
+    Tail.findByIdAndUpdate(id, infoTailEdit, (err, tails) => {
+      if (err){ return next(err); }
+      return res.redirect(`/tails/${tails._id}`);
+    });
+  },
+deletePost: (req, res, next)=>{
+  const id = req.params.id;
+      console.log("entra en delete");
+Tail.findByIdAndRemove(id, (err, tails) => {
+  if (err){ return next(err); }
+  return res.redirect('/tails');
+});
+}
 
 
 };

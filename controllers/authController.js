@@ -14,4 +14,4 @@ module.exports = {
     failureRedirect : '/auth/login'
   }),
 
-  logout: (req, res, next) => { req.logout(); res.redirect('/../'); } }
+  logout: (req, res, next) => { req.logout(); res.redirect('/../'); } };
