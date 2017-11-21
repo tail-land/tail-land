@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: { type: String, required: [true, 'Insert name'] },
-  lastName: { type: String, required: [true, 'Insert last name'] },
-  email: { type: String, required: [true, 'Insert email'] },
-  password: { type: String, required: [true, 'Insert password'] },
+  username: { type: String },
+  lastName: { type: String },
+  email: { type: String },
+  password: { type: String },
   pic_path: String,
   pic_name: String,
-  rol: {type: String, enum: ['Ta', 'User'], required: [true, 'Insert rol']}
+  rol: {type: String, enum: ['Ta', 'User']}
 }, {
   timestamps: {
     createdAt: "created_at",

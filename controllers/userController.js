@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 module.exports = {
     profileGet: (req, res, next) => {
-      User.find( {_id: req.params.id}, (err, user) => {
+      User.findById( req.user._id, (err, user) => {
         res.render('user/profile', {
           user: user,
         });
@@ -22,7 +22,7 @@ module.exports = {
   
     editPost: (req, res, next) => {
       let updates = {
-        name: req.body.name,
+        username: req.body.username,
         email: req.body.email,
         pic_path: `../uploads/${req.file.filename}`,
         pic_name: req.file.originalname

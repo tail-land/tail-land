@@ -1,16 +1,18 @@
 const app = require('express')();
 require('dotenv').load();
 require('./config/passport')();
-require('./config/express')(app);
 require('./config/expressController')(app);
+require('./config/express')(app);
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const tail = require('./routes/tail');
+const user = require('./routes/user');
 
 app.use('/', index);
-app.use('/', auth);
+app.use('/auth', auth);
 app.use('/tails', tail);
+app.use('/users', user);
 
 require('./config/error-handler')(app);
 
