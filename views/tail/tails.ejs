@@ -1,20 +1,22 @@
 <h1><%= title %></h1>
 
+<p>
+<a href="/tails/signup">New tail</a>
+</p>
+
 <% tails.forEach((e) => { %>
 
-<p> <%= e.name %> </p>
-<p> <%= e.time_max %> </p>
-<p> <%= e.creator %> </p>
-
-
+<p>name: <%= e.name %> </p>
+<p>time max: <%= e.time_max %> </p>
+<p>TA: <%= e.creator %> </p>
 <p>
-<h3>Lista de cola</h3>
+<h3>Users tail</h3>
 <ul>
-  <li>Alberto</li>
-  <li>Carlos</li>
-  <li>Ángel</li>
-  <li>Sara</li>
+<% e.tail_user.forEach((e => { %>
+  <li><%= e %></li>
+<% })); %>
 
 </ul>
 </p>
+<hr>
 <% }) %>

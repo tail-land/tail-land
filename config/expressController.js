@@ -5,6 +5,6 @@ const config = require('./config');
 module.exports = function(app){
   console.log(config.db);
   mongoose.connect(config.db)
-    .then(console.log("connected"))
+    .then(console.log("connected"));
 
 };
