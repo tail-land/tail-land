@@ -30,9 +30,9 @@ module.exports = function (){
               if (err){ return next(err); }
               if (user) { return next(null, false); }
               else {
-                  const { username, lastName, email, password, pic_path, pic_name } = req.body;
+                  const { username, name, lastName, email, password, pic_path, pic_name } = req.body;
                   const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-                  const newUser = new User({username,lastName, email, password: hashPass, pic_path, pic_name});
+                  const newUser = new User({username, name, lastName, email, password: hashPass, pic_path, pic_name});
 
                   newUser.save((err) => {
                       if (err){ next(err); }
@@ -45,7 +45,7 @@ module.exports = function (){
 
 
   passport.use('local-login', new LocalStrategy((username, password, next) => {
-    User.findOne({ email:username }, (err, user) => {
+    User.findOne({ username:username }, (err, user) => {
       if (err) {
         return next(err);
       }

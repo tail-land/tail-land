@@ -3,8 +3,8 @@ const userController = require('../controllers/userController');
 const middle = require('../config/middlewares');
 
 router.get('/profile', middle.EnsureLoggedIn, userController.profileGet);
-
-router.get('/:id/edituser', middle.EnsureLoggedIn, userController.editGet);
-router.post('/:id/edituser', [middle.EnsureLoggedIn, middle.UploadFile]);
+// router.get('/:id', userController.idGet);
+router.get('/:id/editUser', middle.EnsureLoggedIn, userController.editGet);
+router.post('/:id', middle.EnsureLoggedIn, userController.editPost);
 
 module.exports = router;

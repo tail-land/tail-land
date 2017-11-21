@@ -2,15 +2,29 @@ const User = require('../models/User');
 
 module.exports = {
     profileGet: (req, res, next) => {
+      console.log('profile!!!!')      
       User.findById( req.user._id, (err, user) => {
+        console.log('y otro porfile')
         res.render('user/profile', {
-          user: user,
+          user: user
         });
       });
     },
-  
+
+    // idGet: (req, res, next) => {
+    //   console.log('id de get')
+    //   const id = req.params.id;
+    //   User.findById(id, (err, user) => {
+    //     res.render('user/profile', {
+    //       user: user,
+    //       title: "user"
+    //     });
+    //   });
+    // },
+
     editGet: (req, res, next) => {
-      User.findById(req.params.id, (err, user) => {
+      console.log('edit get')
+      User.findById(req.user._id, (err, user) => {
         if (err) {
           console.log(err);
         }
@@ -21,17 +35,18 @@ module.exports = {
     },
   
     editPost: (req, res, next) => {
-      let updates = {
+      console.log('entrando para guardar')
+      const id = req.params.id;
+      const updates = {
         username: req.body.username,
+        name: req.body.name,
+        lastName: req.body.lastName,
         email: req.body.email,
-        pic_path: `../uploads/${req.file.filename}`,
-        pic_name: req.file.originalname
       };
-      User.findByIdAndUpdate(req.params.id, updates, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-        res.redirect('/user/profile');
+      User.findByIdAndUpdate(id, updates, (err, user) => {
+        console.log('guardando el edit')
+        if (err) { return next(err); }
+        return res.redirect('/users/profile');
       });
     }
   };

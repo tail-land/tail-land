@@ -4,18 +4,16 @@
   
   <div id="container">
     <ul>
+      <li class="collection-item avatar">
+          <img src="<%= user.pic_path%>" alt="" class="circle">
+      </li>
       <li>Username <%= user.username %></li>
       <li>Name: <%= user.name %></li>
       <li>LastName: <%= user.lastName %></li>
-      <li>Image: <img src="<%= user.pic_path %>"></li>
       <li>Email: <%= user.email %></li>
       <li>Rol: <%= user.rol %></li>
     </ul>
   </div>
-  <a href="/auth/logout">Logout</a>  
-    <form action="users/profile/<%= user._id %>/edit" method="GET">
-      <button class="button blue"> Edit Your Profile </button>
-    </form>  
-  <form action="/" method="GET">
-    <button class="button blue"> Back home!</button>
-  </form>
+  <a href="/auth/logout">Logout</a><br>
+  <a href="/users/<%= user._id %>/editUser">Edit user</a> <br>
+  <a href="/">Back home!</a>
