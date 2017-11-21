@@ -28,6 +28,7 @@ module.exports = function(app){
     saveUninitialized: true,
     store: new MongoStore( { mongooseConnection: mongoose.connection })
   }));
+  
   app.use((req, res, next) => {
     res.locals.user = req.user;
     next();

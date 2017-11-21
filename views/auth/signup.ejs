@@ -1,7 +1,10 @@
-<form id="form" action="/signup" method="POST">
+<form id="form" action="/auth/signup" method="POST">
     <h2>Create a new account!</h2>
-    <label for="name">Name</label><br>
-    <input type="text" name="name" placeholder="Enter your name here">
+    <label for="username">Name</label><br>
+    <input type="text" name="username" placeholder="Enter your name here">
+    <br><br>
+    <label for="lastName">Last name</label><br>
+    <input type="text" name="lastName" placeholder="Enter your last name here">
     <br><br>
     <label for="email">Email</label><br>
     <input type="text" name="email" placeholder="Enter your email here">
@@ -18,7 +21,7 @@
       <option value="Ta">Ta</option>
     </select>
     <br><br>
-    <button>Create account</button>
+    <button type="submit">Create account</button>
   </form>
   <br>
   <a href="/">Back to principal page</a>
