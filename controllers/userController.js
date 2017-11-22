@@ -5,25 +5,18 @@ const flash = require("connect-flash");
 module.exports = {
     profileGet: (req, res, next) => {
       User.findById( req.user._id, (err, user) => {
+        //.then(() => res.render('user/profiler', { user: user }))
+        //.catch(err => next(err))
         res.render('user/profile', {
           user: user
         });
       });
     },
-    
-    // idGet: (req, res, next) => {
-    //   console.log('id de get')
-    //   const id = req.params.id;
-    //   User.findById(id, (err, user) => {
-    //     res.render('user/profile', {
-    //       user: user,
-    //       title: "user"
-    //     });
-    //   });
-    // },
 
     editGet: (req, res, next) => {
       User.findById(req.user._id, (err, user) => {
+        //.then(() => res.render('user/editUser', { user: user }))
+        //.catch(err => next(err))
         if (err) {
           console.log(err);
         }
@@ -46,6 +39,8 @@ module.exports = {
         pic_name: req.file.originalname
       };
       User.findByIdAndUpdate(id, updates, (err, user) => {
+        //.then(() => res.redirect('/users/profile'))
+        //.catch(err => next(err))
         if (err) { return next(err); }
         return res.redirect('/users/profile');
       });
