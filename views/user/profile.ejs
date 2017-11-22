@@ -5,7 +5,7 @@
   <div id="container">
     <ul>
       <li class="collection-item avatar">
-          <img src="<%= user.pic_path%>" alt="" class="circle">
+          <img src="<%= user.pic_path%>" alt="" class="userImg" width="100px" height="100px">
       </li>
       <li>Username <%= user.username %></li>
       <li>Name: <%= user.name %></li>
@@ -14,6 +14,9 @@
       <li>Role: <%= user.role %></li>
     </ul>
   </div>
+  <form action="/email/sendEmail" method="POST">
+  <button type="submit">Send Email</button>
+</form>
   <a href="/auth/logout">Logout</a><br>
   <a href="/users/<%= user._id %>/editUser">Edit user</a> <br>
   <a href="/">Back home!</a>
