@@ -1,12 +1,32 @@
 const Tail = require("../models/Tail");
+const User = require("../models/User");
+
+
+// User.findById(req.params.id)
+//   .populate('username')
+//   .then(user =>{
+//     if(req.user._id.equals(user.username._id)){
+//       return next();
+//     };
+//     throw new Error("You are not the owner");
+//   })
+//   .catch(e => {
+//     console.error(e);
+//     res.redirect('/tails/'+req.params.id);
+//   });
+//
+//
 
 module.exports = {
   tailsGet: (req, res, next) => {
+
     Tail.find((err, tails) => {
       if (err) { return next(err); }
         res.render("tail/tails",{ title: "Tails",tails: tails});
       });
   },
+
+
   signupGet: (req, res, next) => {
     res.render("tail/signup",{ title: "Tail signup" });
   },
@@ -39,6 +59,7 @@ module.exports = {
     const id = req.params.id;
 
     Tail.findById(id, (err, tails) => {
+      console.log(req.locals);
       res.render('tail/tail', {
         tails: tails,
         title: "Tail"
@@ -76,6 +97,10 @@ Tail.findByIdAndRemove(id, (err, tails) => {
   if (err){ return next(err); }
   return res.redirect('/tails');
 });
+},
+adMePatch: (req, res, next)=>{
+
+
 }
 
 

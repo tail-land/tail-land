@@ -12,5 +12,6 @@ router.get('/:id', tailController.idGet);
 router.get("/:id/edit", tailController.editGet);
 router.post('/:id', tailController.editPost);
 
+router.post('/:id', tailController.adMePatch);
 router.post('/:id/delete', tailController.deletePost);
 module.exports = router;
