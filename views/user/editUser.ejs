@@ -1,0 +1,23 @@
+<h2>Edit Your Profile</h2>
+
+<form action="/users/<%= user._id %>" method="POST" enctype="multipart/form-data" id="form-container">
+    <label for="username">User name</label><br>
+    <input type="text" name="username" placeholder="Enter your user name here">
+    <br><br>
+    <label for="name">Name</label><br>
+    <input type="text" name="name" placeholder="Enter your name here">
+    <br><br>
+    <label for="lastName">Last name</label><br>
+    <input type="text" name="lastName" placeholder="Enter your last name here">
+    <br><br>
+    <label for="email">Email</label><br>
+    <input type="text" name="email" placeholder="Enter your email here">
+    <br><br>
+    <label for="password">Password</label><br>
+    <input type="password" name="password" placeholder="Enter your password here">
+    <br><br>
+    <label for="image">Image</label><br>
+    <input type="file" name="photo" placeholder="Your image">
+    <br><br>
+    <button type="submit">Edit</button>
+</form>
