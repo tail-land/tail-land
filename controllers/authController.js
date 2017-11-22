@@ -1,8 +1,9 @@
 const User = require("../models/User");
 const passport = require("passport");
+const flash = require("connect-flash");
 
 module.exports = {
-  signupGet: (req, res, next) => { res.render('auth/signup'); },
+  signupGet: (req, res, next) => { res.render('auth/signup' ); },
   signupPost: passport.authenticate('local-signup', {
       successRedirect: '/users/profile',
       failureRedirect: '/auth/signup'

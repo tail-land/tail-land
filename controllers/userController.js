@@ -1,5 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const flash = require("connect-flash");
+
 module.exports = {
     profileGet: (req, res, next) => {
       User.findById( req.user._id, (err, user) => {
@@ -8,7 +10,7 @@ module.exports = {
         });
       });
     },
-
+    
     // idGet: (req, res, next) => {
     //   console.log('id de get')
     //   const id = req.params.id;
