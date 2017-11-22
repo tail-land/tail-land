@@ -29,9 +29,9 @@ module.exports = function (){
               if (err){ return next(err); }
               if (user) { return next(null, false); }
               else {
-                  const { username, name, lastName, email, password} = req.body;
+                  const { username, name, lastName, email, password, role } = req.body;
                   const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-                  const newUser = new User({username, name, lastName, email, password: hashPass, pic_path: `/uploads/${req.file.filename}`, pic_name: req.file.originalname});
+                  const newUser = new User({username, name, lastName, email, password: hashPass, role, pic_path: `/uploads/${req.file.filename}`, pic_name: req.file.originalname});
 
                   newUser.save((err) => {
                       if (err){ next(err); }
