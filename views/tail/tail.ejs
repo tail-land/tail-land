@@ -1,0 +1,46 @@
+
+<h1><%= title %></h1>
+<p>users: <%= users.username %> </p>
+<p>
+  <a href="/tails">Tails</a>
+</p>
+<p>
+  <a href="/tails/signup">New tail</a>
+</p>
+<p>name: <%= tails.name %> </p>
+<p>time max: <%= tails.time_max %> </p>
+<p>TA: <%= tails.creator %> </p>
+<p>
+  <hr>
+<h3>Users tail</h3>
+<ul id="tail_user">
+<% tails.tail_user.forEach((e => { %>
+  <li class="item" ><%= e %>
+    <form id="deleteAddMe" action="index.html" method="post">
+      <button type="button" name="button">delete</button>
+    </form>
+  </li>
+<% })); %>
+
+</ul>
+</p>
+<p>
+  <a href="/tails/<%= tails._id %>/edit">Edit tail</a>
+</p>
+<p>
+  <form class="" action="/tails//delete" method="POST">
+    <button type="submit" name="button">Delete tail</button>
+  </form>
+</p>
+
+<p>
+  <a href="#" id="addme">Add me here!!</a>
+</p>
+
+<script type="text/javascript">
+let myUser = <%- JSON.stringify(users) %>
+let myTail = <%- JSON.stringify(tails) %>
+  </script>
+
+
+<script type="text/javascript" src="../javascripts/tails/addme.js"></script>
