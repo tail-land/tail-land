@@ -4,5 +4,5 @@ const upload = multer({ dest: './public/uploads/' });
 
 module.exports = {
   EnsureLoggedIn: ensureLoggedIn('../../auth/login'),
-  UploadFile: upload.single('avatar-1')
+  UploadFile: upload.single('photo')
 };

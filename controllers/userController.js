@@ -1,16 +1,27 @@
 const User = require('../models/User');
-
+const bcrypt = require('bcrypt');
 module.exports = {
     profileGet: (req, res, next) => {
       User.findById( req.user._id, (err, user) => {
         res.render('user/profile', {
-          user: user,
+          user: user
         });
       });
     },
-  
+
+    // idGet: (req, res, next) => {
+    //   console.log('id de get')
+    //   const id = req.params.id;
+    //   User.findById(id, (err, user) => {
+    //     res.render('user/profile', {
+    //       user: user,
+    //       title: "user"
+    //     });
+    //   });
+    // },
+
     editGet: (req, res, next) => {
-      User.findById(req.params.id, (err, user) => {
+      User.findById(req.user._id, (err, user) => {
         if (err) {
           console.log(err);
         }
@@ -21,17 +32,20 @@ module.exports = {
     },
   
     editPost: (req, res, next) => {
-      let updates = {
+      const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);      
+      const id = req.user.id;
+      const updates = {
         username: req.body.username,
+        name: req.body.name,
+        lastName: req.body.lastName,
         email: req.body.email,
-        pic_path: `../uploads/${req.file.filename}`,
+        password: hashPass,
+        pic_path: `/uploads/${req.file.filename}`,
         pic_name: req.file.originalname
       };
-      User.findByIdAndUpdate(req.params.id, updates, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-        res.redirect('/user/profile');
+      User.findByIdAndUpdate(id, updates, (err, user) => {
+        if (err) { return next(err); }
+        return res.redirect('/users/profile');
       });
     }
   };
