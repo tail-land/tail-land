@@ -20,7 +20,7 @@ module.exports = function(app){
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(config.rootPath+'public'));
-  app.use('/tail/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
+  app.use('/dist/bootstrap', express.static(path.join(__dirname, '../node_modules/bootstrap/dist')));
   //app.use('/tail/jquery', express.static(path.join(__dirname, '../node_modules/jquery/dist')));
   app.use(session({
     secret: 'tail the win!!olé!',

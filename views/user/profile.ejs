@@ -1,22 +1,18 @@
-<div id="profile">
-    <h2><%= user.username %></h2>
+  <div class="content">
+      <div class="card">
+          <div class="firstinfo"><img src="<%= user.pic_path%>" />
+              <div class="profileinfo">
+                  <h1><%= user.username %></h1>
+                  <h3><%= user.name %></h3>
+                  <h3><%= user.lastName %></h3>
+                  <h3><%= user.email %></h3>
+                  <h3><%= user.role %></h3>                
+              </div>
+          </div>
+      </div>
+      <div class="badgescard">
+          <a href="/users/<%= user._id %>/editUser">Edit user</a>
+          <a href="/auth/logout">Logout</a>
+          <a href="/">Back home</a>
+      </div>
   </div>
-  
-  <div id="container">
-    <ul>
-      <li class="collection-item avatar">
-          <img src="<%= user.pic_path%>" alt="" class="userImg" width="100px" height="100px">
-      </li>
-      <li>Username <%= user.username %></li>
-      <li>Name: <%= user.name %></li>
-      <li>LastName: <%= user.lastName %></li>
-      <li>Email: <%= user.email %></li>
-      <li>Role: <%= user.role %></li>
-    </ul>
-  </div>
-  <form action="/email/sendEmail" method="POST">
-  <button type="submit">Send Email</button>
-</form>
-  <a href="/auth/logout">Logout</a><br>
-  <a href="/users/<%= user._id %>/editUser">Edit user</a> <br>
-  <a href="/">Back home!</a>

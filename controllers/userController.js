@@ -4,26 +4,29 @@ const flash = require("connect-flash");
 
 module.exports = {
     profileGet: (req, res, next) => {
-      User.findById( req.user._id, (err, user) => {
-        //.then(() => res.render('user/profiler', { user: user }))
-        //.catch(err => next(err))
-        res.render('user/profile', {
-          user: user
-        });
-      });
+    //   User.findById( req.user._id, (err, user) => {
+    //     res.render('user/profile', {
+    //       user: user
+    //     });
+    //   });
+    // },
+      User.findById( req.user._id)
+        .then(user => res.render('user/profile', { user: user }))
+        .catch(err => next(err))
     },
 
     editGet: (req, res, next) => {
-      User.findById(req.user._id, (err, user) => {
-        //.then(() => res.render('user/editUser', { user: user }))
-        //.catch(err => next(err))
-        if (err) {
-          console.log(err);
-        }
-        res.render('user/editUser', {
-          user: user
-        });
-      });
+      // User.findById(req.user._id, (err, user) => {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   res.render('user/editUser', {
+      //     user: user
+      //   });
+      // });
+      User.findById(req.user._id)
+      .then(user => res.render('user/editUser', { user: user }))
+      .catch(err => next(err))
     },
   
     editPost: (req, res, next) => {
@@ -38,11 +41,12 @@ module.exports = {
         pic_path: `/uploads/${req.file.filename}`,
         pic_name: req.file.originalname
       };
-      User.findByIdAndUpdate(id, updates, (err, user) => {
-        //.then(() => res.redirect('/users/profile'))
-        //.catch(err => next(err))
-        if (err) { return next(err); }
-        return res.redirect('/users/profile');
-      });
+      // User.findByIdAndUpdate(id, updates, (err, user) => {
+      //   if (err) { return next(err); }
+      //   return res.redirect('/users/profile');
+      // });
+      User.findByIdAndUpdate(id, update)
+       .then(() => res.redirect('/users/profile'))
+        .catch(err => next(err))
     }
   };
