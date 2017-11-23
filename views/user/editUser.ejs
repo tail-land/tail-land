@@ -1,23 +1,86 @@
-<h2>Edit Your Profile</h2>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h3>Edit your profile</h3>
+            <form action="/users/<%= user._id %>" method="POST" enctype="multipart/form-data" id="form-container">
 
-<form action="/users/<%= user._id %>" method="POST" enctype="multipart/form-data" id="form-container">
-    <label for="username">User name</label><br>
-    <input type="text" name="username" placeholder="Enter your user name here">
-    <br><br>
-    <label for="name">Name</label><br>
-    <input type="text" name="name" placeholder="Enter your name here">
-    <br><br>
-    <label for="lastName">Last name</label><br>
-    <input type="text" name="lastName" placeholder="Enter your last name here">
-    <br><br>
-    <label for="email">Email</label><br>
-    <input type="text" name="email" placeholder="Enter your email here">
-    <br><br>
-    <label for="password">Password</label><br>
-    <input type="password" name="password" placeholder="Enter your password here">
-    <br><br>
-    <label for="image">Image</label><br>
-    <input type="file" name="photo" placeholder="Your image">
-    <br><br>
-    <button type="submit">Edit</button>
-</form>
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">User name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user fa" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control" name="username" id="name" placeholder="Enter your user name" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Last name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control" name="lastName" id="name" placeholder="Enter your last name" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                            </span>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                            </span>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image" class="cols-sm-2 control-label">Image</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                            </span>
+                            <input type="file" class="form-control" name="photo" id="name" placeholder="Image" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <input type="submit" value="Edit" class="btn btn-primary btn-lg btn-block login-button">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
