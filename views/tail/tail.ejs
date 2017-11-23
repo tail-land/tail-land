@@ -15,9 +15,11 @@
 <h3>Users tail</h3>
 <ul id="tail_user">
 <% tails.tail_user.forEach((e => { %>
-  <li class="item" ><%= e %>
-    <form id="deleteAddMe" action="index.html" method="post">
-      <button type="button" name="button">delete</button>
+
+  <li class="item" ><%= e.username %>
+    <form action="/tails/<%= e.id %>/deleteAddMe" method="post">
+      <input type="text" name="tailID" value="<%= tails._id %>">
+      <button type="submit" name="button">delete</button>
     </form>
   </li>
 <% })); %>
@@ -28,7 +30,7 @@
   <a href="/tails/<%= tails._id %>/edit">Edit tail</a>
 </p>
 <p>
-  <form class="" action="/tails//delete" method="POST">
+  <form class="" action="/tails/<%= tails._id %>/delete" method="POST">
     <button type="submit" name="button">Delete tail</button>
   </form>
 </p>

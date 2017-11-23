@@ -16,6 +16,7 @@ router.post('/:id/delete', tailController.deletePost);
 
 router.post('/:id/addMe', tailController.addMePatch);
 router.get('/:id/addMe', tailController.addMeGet);
-router.post('/:id/deleteAddMe', tailController.deleteAddMe);
+
+router.post('/:userID/deleteAddMe', tailController.deleteAddMePost);
 
 module.exports = router;

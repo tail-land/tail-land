@@ -1,8 +1,8 @@
 
 $(document).ready(() => {
 console.log("entra en addme.js");
-console.log("esto es myUser" + myUser);
-console.log("esto es myTail" + myTail);
+// console.log("esto es myUser" + myUser);
+// console.log("esto es myTail" + myTail);
 
 // Create an object with data to submit
 //let idTail = tails.id;
@@ -14,31 +14,13 @@ const id = {
   tail:idTail
 };
 
-// $('#deleteAddMe').on('click', (event) => {
-//
-//   $.ajax({
-//     method:  'POST',
-//     url:     `/tails/${idTail}/addMe`,
-//       // The data key is for sending data in a POST, PUT or PATCH!
-//     data:    id,
-//     success: function (response) {
-//         console.log(response);
-//         updateTailUser();
-//       },
-//     error:   handleError
-//   });
-// });
-
-
-$('#addme').on('click', (event) => {
-
+$('#delete_addme').on('click', (event) => {
   $.ajax({
-    method:  'POST',
-    url:     `/tails/${idTail}/addMe`,
-      // The data key is for sending data in a POST, PUT or PATCH!
+    method:  'DELETE',
+    url:     `/tails/${idTail}/deleteAddMe`,
     data:    id,
     success: function (response) {
-        console.log(response);
+        console.log("entra en delete");
         updateTailUser();
       },
     error:   handleError
@@ -46,27 +28,38 @@ $('#addme').on('click', (event) => {
 });
 
 
-let updateTailUser= () => {
-console.log("entra update");
+$('#addme').on('click', (event) => {
 
+  $.ajax({
+    method:  'POST',
+    url:     `/tails/${idTail}/addMe`,
+    data:    id,
+    success: function (response) {
+        //console.log(response);
+        updateTailUser();
+      },
+    error:   handleError
+  });
+});
+
+//actualiza la vista de la cola de usuarios
+let updateTailUser= () => {
           $.ajax({
             method:  'GET',
             url:     `/tails/${idTail}/addMe`,
-              // The data key is for sending data in a POST, PUT or PATCH!
             data: id,
             success: function (response) {
-                console.log(response);
+                //console.log(response);
                 console.log("entra");
-
                 // $.each(response, function(username) {
                   console.log("each");
                   $("#tail_user").append(
-                     "<li class='item'>"+ username +"</li>" +
-                     "<form id='deleteAddMe' action='index.html' method='post'>"+
-                     "<button type='button' name='button'>delete</button>"+
-                     "</form>"
-                    );
-                //  });
+                      "<li class='item'>"+ username +"<a href='' id='delete_addme'> Delete</a></li>"
+                //      + "<form id='delete_addme' action='"+ "/tails/" + idTail + "/deleteAddMe" +"' method='post'>"+
+                //      "<button type='button' name='button'>delete</button>"+
+                //      "</form>"
+                     );
+                // }); //cierra each
               },
             error:   handleError
           });

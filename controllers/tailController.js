@@ -1,30 +1,12 @@
 const Tail = require("../models/Tail");
 const User = require("../models/User");
 
-
-// User.findById(req.params.id)
-//   .populate('username')
-//   .then(user =>{
-//     if(req.user._id.equals(user.username._id)){
-//       return next();
-//     };
-//     throw new Error("You are not the owner");
-//   })
-//   .catch(e => {
-//     console.error(e);
-//     res.redirect('/tails/'+req.params.id);
-//   });
-//
-//
-
 module.exports = {
   tailsGet: (req, res, next) => {
-
-    Tail.find((err, tails) => {
-      if (err) { return next(err); }
-        res.render("tail/tails",{
-           title: "Tails",tails: tails});
-      });
+    Tail.find()
+      .populate("tail_user")
+      .then(result => res.render("tail/tails", {title:"Tails",tails: result,users: req.user}))
+      .catch(err => next(err));
   },
 
 
@@ -47,26 +29,19 @@ module.exports = {
 
     const newTail = new Tail(infoTail);
 
-      newTail.save((err) => {
-        if (err) {
-          return res.render('tails/signup', {
-            tails: newTail
-          });
-        }
-        return res.redirect('/tails');
-      });
+    newTail.save()
+      .then(()=>res.redirect('/tails'))
+      .catch(err=> res.render("tails/signup",{tails: newTail}));
   },
   idGet: (req, res, next) => {
     const id = req.params.id;
-
-    Tail.findById(id, (err, tails) => {
-      console.log(req.user);
-      res.render('tail/tail', {
-        tails: tails,
-        users: req.user,
-        title: "Tail"
+    Tail.findById(id)
+      .populate("tail_user")
+      .then(result=>{
+        //console.log(result);
+        res.render('tail/tail', {tails: result,users: req.user,title: "Tail"});
       });
-    });
+
   },
 
   editGet: (req, res, next) => {
@@ -117,20 +92,19 @@ addMeGet: (req, res, next) => {
     });
 
 },
-deleteAddMe: (req, res, next) => {
-  const id = req.params.id;
-  Tail.findByIdAndRemove(id)
-    .then(result => {
-      console.log("deleteAddMe!!!!!!!!!!!!!!!!!!!!!!");
-      res.json(result);
-      res.render('tail/tail', {
-        tails: tails,
-        users: req.user,
-        title: "Tail"
-      });
-    });
+deleteAddMePost: (req, res, next) => {
+    const id = req.body.tailID;
+      console.log("El req!!!!!! " );
+  console.log(req.params);
+  //   const tail_user = req.body.;
+        console.log("entra en delete add");
 
-}
+    Tail.findByIdAndUpdate(id,{ $pullAll: {tail_user: [req.params.userID] } })
+      .then(result => res.redirect(`/tails/${id}`))
+
+      .catch(err => next(err));
+  }
+
 
 
 };
