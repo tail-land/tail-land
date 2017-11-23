@@ -1,14 +1,15 @@
 
 <h1><%= title %></h1>
-<p>users: <%= users.username %> </p>
 <p>
   <a href="/tails">Tails</a>
 </p>
-<p>
-  <a href="/tails/signup">New tail</a>
-</p>
+<p><strong>Hi, <%= users.username %> </strong></p>
 <p>name: <%= tails.name %> </p>
-<p>time max: <%= tails.time_max %> </p>
+<p>Time Session: <%= tails.time_max %> </p>
+<div class="item-time">
+  <h2 id="demo"></h2>
+  <h1 class="info_time"></h1>
+</div>
 <p>TA: <%= tails.creator %> </p>
 <p>
   <hr>
@@ -18,16 +19,23 @@
 
   <li class="item" ><%= e.username %>
     <form action="/tails/<%= e.id %>/deleteAddMe" method="post">
-      <input type="text" name="tailID" value="<%= tails._id %>">
+      <input style="display:none" type="text" name="tailID" value="<%= tails._id %>">
       <button type="submit" name="button">delete</button>
     </form>
   </li>
 <% })); %>
-
 </ul>
 </p>
 <p>
+  <a href="#" id="addme">Add me here!!</a>
+</p>
+<br>
+<br>
+<p>
   <a href="/tails/<%= tails._id %>/edit">Edit tail</a>
+</p>
+<p>
+  <a href="/tails/signup">New tail</a>
 </p>
 <p>
   <form class="" action="/tails/<%= tails._id %>/delete" method="POST">
@@ -35,14 +43,20 @@
   </form>
 </p>
 
-<p>
-  <a href="#" id="addme">Add me here!!</a>
-</p>
 
 <script type="text/javascript">
 let myUser = <%- JSON.stringify(users) %>
 let myTail = <%- JSON.stringify(tails) %>
-  </script>
+</script>
 
+<script type="text/javascript">
+$(document).ready(() => {
+</script>
 
 <script type="text/javascript" src="../javascripts/tails/addme.js"></script>
+<script type="text/javascript" src="../javascripts/time/currenttime.js"></script>
+
+
+<script type="text/javascript">
+});
+</script>

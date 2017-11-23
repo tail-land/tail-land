@@ -1,5 +1,5 @@
 
-$(document).ready(() => {
+// $(document).ready(() => {
 console.log("entra en addme.js");
 // console.log("esto es myUser" + myUser);
 // console.log("esto es myTail" + myTail);
@@ -13,20 +13,6 @@ const id = {
   user:idUser,
   tail:idTail
 };
-
-$('#delete_addme').on('click', (event) => {
-  $.ajax({
-    method:  'DELETE',
-    url:     `/tails/${idTail}/deleteAddMe`,
-    data:    id,
-    success: function (response) {
-        console.log("entra en delete");
-        updateTailUser();
-      },
-    error:   handleError
-  });
-});
-
 
 $('#addme').on('click', (event) => {
 
@@ -54,10 +40,10 @@ let updateTailUser= () => {
                 // $.each(response, function(username) {
                   console.log("each");
                   $("#tail_user").append(
-                      "<li class='item'>"+ username +"<a href='' id='delete_addme'> Delete</a></li>"
-                //      + "<form id='delete_addme' action='"+ "/tails/" + idTail + "/deleteAddMe" +"' method='post'>"+
-                //      "<button type='button' name='button'>delete</button>"+
-                //      "</form>"
+                      "<li class='item'>"+ username + "<form action='/tails/"+ idUser +"/deleteAddMe' method='post'> " +
+                     "<input style='display:none' type='text' name='tailID' value='"+idTail+"'>" +
+                     "<button type='submit' name='button'>delete</button>" +
+                       "</form>"+"</li>"
                      );
                 // }); //cierra each
               },
@@ -73,4 +59,21 @@ function handleError (err) {
   console.log(err);
 }
 
+
+$('#delete_addme').on('click', (event) => {
+  console.log("entra en delete");
+  $.ajax({
+    method:  'POST',
+    url:     `/tails/${idTail}/deleteAddMe`,
+    data:    id,
+    success: function (response) {
+
+        alert("entra en delete");
+        updateTailUser();
+      },
+    error:   handleError
+  });
 });
+
+
+// });
