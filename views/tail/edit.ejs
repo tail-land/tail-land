@@ -1,0 +1,15 @@
+<h1><%= title %></h1>
+<form class="" action="/tails/<%= tails._id %>"; method="post">
+<p>
+<label for="name">Name tail: </label>
+  <input type="text" name="name" value="<%= tails.name %>" placeholder="name tail">
+</p>
+<p>
+<label for="time_max">Time max (min): </label>
+  <input type="number" name="time_max" value="<%= tails.time_max %>" placeholder="min">
+</p>
+<button type="submit" name="button">edit tail</button>
+</form>
+<p>
+<a href="/tails">tails</a>
+</p>

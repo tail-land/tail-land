@@ -28,10 +28,10 @@ router.post('/sendEmail', (req, res, next) => {
             console.log(error);
         } else {
             console.log('Message sent: ' + info.response);
-            res.redirect("/users/profile")
+            res.redirect("/users/profile");
         }
     });
 
-})
+});
 
 module.exports = router;

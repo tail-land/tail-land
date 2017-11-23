@@ -12,7 +12,7 @@ module.exports = {
     // },
       User.findById( req.user._id)
         .then(user => res.render('user/profile', { user: user }))
-        .catch(err => next(err))
+        .catch(err => next(err));
     },
 
     editGet: (req, res, next) => {
@@ -26,11 +26,11 @@ module.exports = {
       // });
       User.findById(req.user._id)
       .then(user => res.render('user/editUser', { user: user }))
-      .catch(err => next(err))
+      .catch(err => next(err));
     },
-  
+
     editPost: (req, res, next) => {
-      const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);      
+      const hashPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8), null);
       const id = req.user.id;
       const updates = {
         username: req.body.username,
@@ -47,6 +47,6 @@ module.exports = {
       // });
       User.findByIdAndUpdate(id, update)
        .then(() => res.redirect('/users/profile'))
-        .catch(err => next(err))
+        .catch(err => next(err));
     }
   };

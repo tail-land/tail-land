@@ -5,19 +5,19 @@ const info = [
   {
     name: 'cola 1',
     time_max: 10,
-    tail_user: ['Alberto', 'Angel', 'Carlos'],
+    tail_user: ['5a1558a536d80f2979d91f63'],
     creator: 'Andrei',
   },
   {
     name: 'cola 2',
     time_max: 20,
-    tail_user: ['Antonio', 'Sara', 'Manuel'],
+    tail_user: ['5a1558a536d80f2979d91f63'],
     creator: 'Victor',
   },
   {
     name: 'cola 3',
     time_max: 30,
-    tail_user: ['Nadia', 'Cristian', 'María'],
+    tail_user: ['5a1558a536d80f2979d91f63'],
     creator: 'Andrei',
   }
 ];
