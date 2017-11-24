@@ -1,5 +1,6 @@
+$(document).ready(() => {
 console.log("entra en current time");
-console.log(myTail);
+console.log("MYTAIL", myTail);
 
   let seconds= myTail.time_max * 60;
 
@@ -24,3 +25,4 @@ console.log(myTail);
 
     };
   }
+});

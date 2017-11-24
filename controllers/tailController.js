@@ -76,32 +76,29 @@ Tail.findByIdAndRemove(id, (err, tails) => {
 });
 },
 addMePatch: (req, res, next)=>{
-  Tail.findByIdAndUpdate(req.body.tail,{ $push: { tail_user: req.body.user } })
-    .then(result => res.json(result));
+  Tail.findByIdAndUpdate(req.body.tail,{ $push: { tail_user: req.user._id } })
+    .then(result => {
+      res.json(result);
+    });
 },
 addMeGet: (req, res, next) => {
   const id = req.params.id;
-  Tail.findById(id)
+  Tail.findById(id).populate("tail_user")
     .then(result => {
       res.json(result);
-      res.render('tail/tail', {
-        tails: tails,
-        users: req.user,
-        title: "Tail"
-      });
+
     });
 
 },
 deleteAddMePost: (req, res, next) => {
-    const id = req.body.tailID;
-      console.log("El req!!!!!! " );
-  console.log(req.params);
-  //   const tail_user = req.body.;
+    const id = req.body.tail;
         console.log("entra en delete add");
 
     Tail.findByIdAndUpdate(id,{ $pullAll: {tail_user: [req.params.userID] } })
-      .then(result => res.redirect(`/tails/${id}`))
-
+      .then(result => {
+        console.log(result);
+        res.json(result);
+      })
       .catch(err => next(err));
   }
 

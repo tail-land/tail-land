@@ -14,8 +14,8 @@ router.post('/:id', tailController.editPost);
 
 router.post('/:id/delete', tailController.deletePost);
 
-router.post('/:id/addMe', tailController.addMePatch);
 router.get('/:id/addMe', tailController.addMeGet);
+router.post('/:id/addMe', tailController.addMePatch);
 
 router.post('/:userID/deleteAddMe', tailController.deleteAddMePost);
 

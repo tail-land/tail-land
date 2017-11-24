@@ -1,4 +1,8 @@
 
+<div class="container-fluid">
+<div class="container">
+  <div class="col-xs-6 col-sm-12 col-md-6">
+
 <h1><%= title %></h1>
 <p>
   <a href="/tails">Tails</a>
@@ -14,20 +18,16 @@
 <p>
   <hr>
 <h3>Users tail</h3>
-<ul id="tail_user">
-<% tails.tail_user.forEach((e => { %>
+<input id="tailID" style="display:none" type="text" name="tailID" value="<%= tails._id %>">
+<div class="container-users">
 
-  <li class="item" ><%= e.username %>
-    <form action="/tails/<%= e.id %>/deleteAddMe" method="post">
-      <input style="display:none" type="text" name="tailID" value="<%= tails._id %>">
-      <button type="submit" name="button">delete</button>
-    </form>
-  </li>
-<% })); %>
-</ul>
+
+</div>
+
+
 </p>
 <p>
-  <a href="#" id="addme">Add me here!!</a>
+  <a class="" href="#" id="addme">Add me here!!</a>
 </p>
 <br>
 <br>
@@ -42,21 +42,13 @@
     <button type="submit" name="button">Delete tail</button>
   </form>
 </p>
-
-
+</div>
+</div>
+</div>
 <script type="text/javascript">
 let myUser = <%- JSON.stringify(users) %>
 let myTail = <%- JSON.stringify(tails) %>
 </script>
 
-<script type="text/javascript">
-$(document).ready(() => {
-</script>
-
 <script type="text/javascript" src="../javascripts/tails/addme.js"></script>
 <script type="text/javascript" src="../javascripts/time/currenttime.js"></script>
-
-
-<script type="text/javascript">
-});
-</script>
