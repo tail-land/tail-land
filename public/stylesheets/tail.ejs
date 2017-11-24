@@ -1,0 +1,128 @@
+
+<h1><%= title %></h1>
+<p>
+  <a href="/tails">Tails</a>
+</p>
+<p><strong>Hi, <%= users.username %> </strong></p>
+<p>name: <%= tails.name %> </p>
+<p>Time Session: <%= tails.time_max %> </p>
+<div class="item-time">
+  <h2 id="demo"></h2>
+  <h1 class="info_time"></h1>
+</div>
+<p>TA: <%= tails.creator %> </p>
+<p>
+  <hr>
+<h3>Users tail</h3>
+<ul id="tail_user">
+<% tails.tail_user.forEach((e => { %>
+
+  <li class="item" ><%= e.username %>
+    <% if (users.role == 'Ta') {%>
+    <form action="/tails/<%= e.id %>/deleteAddMe" method="post">
+      <input style="display:none" type="text" name="tailID" value="<%= tails._id %>">
+      <button type="submit" name="button">delete</button>
+    </form>
+    <%}
+    <h1><%= title %></h1>
+    <p>
+      <a href="/tails">Tails</a>
+    </p>
+    <p><strong>Hi, <%= users.username %> </strong></p>
+    <p>name: <%= tails.name %> </p>
+    <p>Time Session: <%= tails.time_max %> </p>
+    <div class="item-time">
+      <h2 id="demo"></h2>
+      <h1 class="info_time"></h1>
+    </div>
+    <p>TA: <%= tails.creator %> </p>
+    <p>
+      <hr>
+    <h3>Users tail</h3>
+    <ul id="tail_user">
+    <% tails.tail_user.forEach((e => { %>
+    
+      <li class="item" ><%= e.username %>
+        <form action="/tails/<%= e.id %>/deleteAddMe" method="post">
+          <input style="display:none" type="text" name="tailID" value="<%= tails._id %>">
+          <button type="submit" name="button">delete</button>
+        </form>
+      </li>
+    <% })); %>
+    </ul>
+    </p>
+    <p>
+      <a href="#" id="addme">Add me here!!</a>
+    </p>
+    <br>
+    <br>
+    <p>
+      <a href="/tails/<%= tails._id %>/edit">Edit tail</a>
+    </p>
+    <p>
+      <a href="/tails/signup">New tail</a>
+    </p>
+    <p>
+      <form class="" action="/tails/<%= tails._id %>/delete" method="POST">
+        <button type="submit" name="button">Delete tail</button>
+      </form>
+    </p>
+    
+    
+    <script type="text/javascript">
+    let myUser = <%- JSON.stringify(users) %>
+    let myTail = <%- JSON.stringify(tails) %>
+    </script>
+    
+    <script type="text/javascript">
+    $(document).ready(() => {
+    </script>
+    
+    <script type="text/javascript" src="../javascripts/tails/addme.js"></script>
+    <script type="text/javascript" src="../javascripts/time/currenttime.js"></script>
+    
+    
+    <script type="text/javascript">
+    });
+    </script>
+    %>
+  </li>
+<% })); %>
+</ul>
+</p>
+<p>
+  <a href="#" id="addme">Add me here!!</a>
+</p>
+<br>
+<br>
+<p>
+  <a href="/tails/<%= tails._id %>/edit">Edit tail</a>
+</p>
+<% if (users.role == 'Ta') {%>
+<p>
+  <a href="/tails/signup">New tail</a>
+</p>
+<%}%>
+<p>
+  <form class="" action="/tails/<%= tails._id %>/delete" method="POST">
+    <button type="submit" name="button">Delete tail</button>
+  </form>
+</p>
+
+
+<script type="text/javascript">
+let myUser = <%- JSON.stringify(users) %>
+let myTail = <%- JSON.stringify(tails) %>
+</script>
+
+<script type="text/javascript">
+$(document).ready(() => {
+</script>
+
+<script type="text/javascript" src="../javascripts/tails/addme.js"></script>
+<script type="text/javascript" src="../javascripts/time/currenttime.js"></script>
+
+
+<script type="text/javascript">
+});
+</script>

@@ -9,10 +9,33 @@
   <script src="/dist/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/dist/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/dist/bootstrap/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/nav-bar.css">  
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/forms.css">
   </head>
   <body>
+      <nav class="navbar navbar-color-r">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button class="btnNav navbar-toggle" data-toggle="collapse" data-target="#my">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">TAIL - LAND</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my">
+              <ul class="nav navbar-nav navbar-right ul2">
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/signup">Signup</a></li>
+                <li><a href="/users/profile">Profile</a></li>
+                <li><a href="/tails">Tails</a></li>
+                <li><a href="#">About Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
     <%- body %>
-
+   
   </body>
 </html>
