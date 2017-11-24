@@ -1,0 +1,25 @@
+.navbar-color-r{
+	background-color: #00bcd4;
+
+}
+.navbar-color-r a{
+	color: white;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+ .ul2 li a:hover,
+ .ul2 li a:active,
+ .ul2 li a:focus{
+	background:white;
+	color:black;
+
+}
+.icon-bar{
+	background-color: white;
+}
+.btnNav{
+	border:2px solid white;
+}
