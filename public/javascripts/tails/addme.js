@@ -22,7 +22,7 @@ $(document).ready(() => {
         );
         for (var i = 0; i < response.tail_user.length; i++) {
           $("#tail_user").append(
-              "<li class='item'>"+ response.tail_user[i]._id + " " +
+              "<li class='item'>"+ response.tail_user[i].username + " " +
               "<button class='delete_addme' id="+ response.tail_user[i]._id +" >delete</button>"+"</li>"
               );
             }
@@ -58,7 +58,6 @@ function activateDeleteButton(){
       url:     `/tails/${event.target.id}/deleteAddMe`,
       data:    id,
       success: function (response) {
-        console.log("8===DD");
         console.log(response);
         userGenerator();
       },

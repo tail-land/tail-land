@@ -40,6 +40,11 @@
 </p>
 <%}%>
 <p>
+<form action="/email/sendEmail" method="POST">
+  <button type="submit">Send Email</button>
+</form>
+</p>
+<p>
   <form class="" action="/tails/<%= tails._id %>/delete" method="POST">
     <button type="submit" name="button">Delete tail</button>
   </form>
